@@ -35,7 +35,8 @@ public class Manager : MonoBehaviour
         //시작 스테이지 입력
         nowStage =nowStageList.stage1;
         //
-        spawn();
+        spawnDefaultEnemy();
+        spawnSpeedEnemy();
     }
 
     public float TileSize
@@ -76,11 +77,22 @@ public class Manager : MonoBehaviour
 
 
     //스포너
-    public void spawn()
+    public void spawnDefaultEnemy()
     {
         Enemy defaultE = new Enemy();
-        defaultE.enemySpeed= 30.0f;
+        defaultE.enemyHp =10;
+        defaultE.enemySpeed= 3.0f;
         EnemyPrefabs.GetComponent<EnemyControl>().createEnmey =defaultE; 
+        Instantiate(EnemyPrefabs);
+    }
+
+
+        public void spawnSpeedEnemy()
+    {
+        Enemy speedE = new Enemy();
+        speedE.enemySpeed= 15.0f;
+        speedE.enemyHp = 10;
+        EnemyPrefabs.GetComponent<EnemyControl>().createEnmey =speedE; 
         Instantiate(EnemyPrefabs);
     }
     
