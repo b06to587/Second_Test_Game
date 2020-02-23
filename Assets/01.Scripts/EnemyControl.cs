@@ -37,9 +37,12 @@ public class EnemyControl : MonoBehaviour
         finalPoint= new Vector2(limitPoint2.x, limitPoint2.y);
         transform.position=startPoint;
 
+
+        
+
        
         StartCoroutine(moveToPoint());
-        
+     
     }
 
     // Update is called once per frame
@@ -117,16 +120,23 @@ public class EnemyControl : MonoBehaviour
         Gizmos.DrawLine(limitPoint4,limitPoint2);
     }
 
-}
+
+    //에너미 생성 클래스
+    public void createDefaultEnemy()
+    {
+        createEnmey= new Enemy();
+        createEnmey.enemySpeed=30.0f;
+    }
 
 
-//에네미형테를 레벨로 정의한다
-public enum EnemyLevel{
-    
+
 }
+   
+
+
 [System.Serializable]
 public class Enemy{
     //에너미 스테이터스 영역
-    public float enemySpeed= 0.05f;
-    public float enemyHp = 10.0f;
+    public float enemySpeed;
+    public float enemyHp;
 }

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Manager : MonoBehaviour
 {
+    //싱글톤 구현 (다른 스크립트에서 참조 가능하도록)
+    public static Manager gm;
     [SerializeField]
     private GameObject tile;
     [SerializeField]
@@ -13,11 +15,27 @@ public class Manager : MonoBehaviour
 
     //적 오브젝트
     public GameObject EnemyPrefabs;
+    //현재 스테이지 리스트를 관리
+    public enum nowStageList
+    {
+        stage1,stage2,stage3
+    }
+    public nowStageList nowStage;
     // Start is called before the first frame update
+    void Awake()
+    {
+        gm = this;// 싱글톤 구현 완료
+    }
     void Start()
     {
        //Debug.Log(TileSize);
         CreateTile();
+       
+        
+        //시작 스테이지 입력
+        nowStage =nowStageList.stage1;
+        //
+        spawn();
     }
 
     public float TileSize
@@ -57,9 +75,19 @@ public class Manager : MonoBehaviour
     }
 
 
-    //몬스터 생성을 위한 스테이지 매니져
-    public void stageManager()
+    //스포너
+    public void spawn()
     {
-
+        Enemy defaultE = new Enemy();
+        defaultE.enemySpeed= 30.0f;
+        EnemyPrefabs.GetComponent<EnemyControl>().createEnmey =defaultE; 
+        Instantiate(EnemyPrefabs);
     }
+    
+
+
+
+
+
+
 }
