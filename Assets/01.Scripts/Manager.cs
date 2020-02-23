@@ -6,10 +6,14 @@ public class Manager : MonoBehaviour
 {
     [SerializeField]
     private GameObject tile;
+    [SerializeField]
+    private GameObject baseGroud;
+    [SerializeField]
+    private int gameMoney;
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log(TileSize);
+       //Debug.Log(TileSize);
         CreateTile();
     }
 
@@ -27,7 +31,7 @@ public class Manager : MonoBehaviour
     private void CreateTile()
     {
         Vector3 worldStart = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width/2,Screen.height/2));
-        Debug.Log(worldStart);
+        //Debug.Log(worldStart);
 
         float tileSize = tile.GetComponent<SpriteRenderer>().sprite.bounds.size.x;
 
@@ -45,6 +49,7 @@ public class Manager : MonoBehaviour
     private void PlaceTile(int x, int y, Vector3 worldStart)
     {
         GameObject newTile = Instantiate(tile);
-         newTile.transform.position = new Vector3(worldStart.x + TileSize * x - TileSize*2, worldStart.y - TileSize * y + TileSize*6 ,0);
+        newTile.transform.position = new Vector3(worldStart.x + TileSize * x - TileSize*2, worldStart.y - TileSize * y + TileSize*6 ,0);
+        newTile.transform.parent = baseGroud.transform;
     }
 }
