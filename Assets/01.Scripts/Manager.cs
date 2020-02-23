@@ -10,6 +10,9 @@ public class Manager : MonoBehaviour
     private GameObject baseGroud;
     [SerializeField]
     private int gameMoney;
+
+    //적 오브젝트
+    public GameObject EnemyPrefabs;
     // Start is called before the first frame update
     void Start()
     {
@@ -51,5 +54,12 @@ public class Manager : MonoBehaviour
         GameObject newTile = Instantiate(tile);
         newTile.transform.position = new Vector3(worldStart.x + TileSize * x - TileSize*2, worldStart.y - TileSize * y + TileSize*6 ,0);
         newTile.transform.parent = baseGroud.transform;
+    }
+
+
+    //몬스터 생성을 위한 스테이지 매니져
+    public void stageManager()
+    {
+
     }
 }

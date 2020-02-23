@@ -24,8 +24,8 @@ public class EnemyControl : MonoBehaviour
 
 
     //에너미 스테이터스 영역
-    public float enemySpeed= 0.05f;
-    public float enemyHp = 10.0f;
+    public Enemy createEnmey;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -64,7 +64,7 @@ public class EnemyControl : MonoBehaviour
                 while(nowPoint==checkPoint.point1)
                 {
                 if(transform.position.y==limitPoint1.y) nowPoint=checkPoint.point2;
-                transform.position=Vector2.MoveTowards(transform.position,firstPoint,enemySpeed*Time.deltaTime);
+                transform.position=Vector2.MoveTowards(transform.position,firstPoint,createEnmey.enemySpeed *Time.deltaTime);
                 yield return null;               
                 }
                 break;
@@ -73,7 +73,7 @@ public class EnemyControl : MonoBehaviour
                 while(nowPoint==checkPoint.point2)
                 {
                 if(transform.position.x==limitPoint2.x) nowPoint=checkPoint.point3;
-                transform.position=Vector2.MoveTowards(transform.position,secondPoint,enemySpeed*Time.deltaTime);
+                transform.position=Vector2.MoveTowards(transform.position,secondPoint,createEnmey.enemySpeed *Time.deltaTime);
                 yield return null;
                 }
                 break;
@@ -82,7 +82,7 @@ public class EnemyControl : MonoBehaviour
                 while(nowPoint==checkPoint.point3)
                 {
                 if(transform.position.y==limitPoint2.y) nowPoint=checkPoint.point4;
-                transform.position=Vector2.MoveTowards(transform.position,finalPoint,enemySpeed*Time.deltaTime);
+                transform.position=Vector2.MoveTowards(transform.position,finalPoint,createEnmey.enemySpeed *Time.deltaTime);
                 yield return null;
                 }
                 break;
@@ -91,7 +91,7 @@ public class EnemyControl : MonoBehaviour
                 while(nowPoint==checkPoint.point4)
                 {
                 if(transform.position.x==limitPoint1.x) nowPoint=checkPoint.point1;
-                transform.position=Vector2.MoveTowards(transform.position,startPoint,enemySpeed*Time.deltaTime);
+                transform.position=Vector2.MoveTowards(transform.position,startPoint,createEnmey.enemySpeed*Time.deltaTime);
                 yield return null;
                 }
                 break;
@@ -117,4 +117,16 @@ public class EnemyControl : MonoBehaviour
         Gizmos.DrawLine(limitPoint4,limitPoint2);
     }
 
+}
+
+
+//에네미형테를 레벨로 정의한다
+public enum EnemyLevel{
+    
+}
+[System.Serializable]
+public class Enemy{
+    //에너미 스테이터스 영역
+    public float enemySpeed= 0.05f;
+    public float enemyHp = 10.0f;
 }
