@@ -250,6 +250,16 @@ MonoBehaviour:
   gameMoney: 0
   EnemyPrefabs: {fileID: 8037388654067559292, guid: 42c7c6d00df5205448eb94908d48fd75,
     type: 3}
+  spriteDefault:
+  - {fileID: 21300000, guid: 872dba149c5addb49ac3649c5b9247d6, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  spriteSpeed:
+  - {fileID: 21300074, guid: 872dba149c5addb49ac3649c5b9247d6, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   nowStage: 0
 --- !u!4 &1187223397
 Transform:

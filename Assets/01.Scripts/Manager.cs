@@ -15,6 +15,17 @@ public class Manager : MonoBehaviour
 
     //적 오브젝트
     public GameObject EnemyPrefabs;
+
+
+    //적 스프라이트 관리
+    // 0 위 1오른쪽 2 아래쪽 3왼쪽 방향 보도록 관리한다
+   public Sprite[] spriteDefault;
+    public Sprite[] spriteSpeed;
+
+
+
+
+
     //현재 스테이지 리스트를 관리
     public enum nowStageList
     {
@@ -86,6 +97,7 @@ public class Manager : MonoBehaviour
         Enemy defaultE = new Enemy();
         defaultE.enemyHp =10;
         defaultE.enemySpeed= 3.0f;
+        EnemyPrefabs.GetComponent<SpriteRenderer>().sprite = spriteDefault[0];
         EnemyPrefabs.GetComponent<EnemyControl>().createEnmey =defaultE; 
         Instantiate(EnemyPrefabs);
     }
@@ -94,8 +106,9 @@ public class Manager : MonoBehaviour
         public void spawnSpeedEnemy()
     {
         Enemy speedE = new Enemy();
-        speedE.enemySpeed= 15.0f;
-        speedE.enemyHp = 10;
+        speedE.enemyHp = 5;
+        speedE.enemySpeed= 6.0f;
+        EnemyPrefabs.GetComponent<SpriteRenderer>().sprite = spriteSpeed[0];
         EnemyPrefabs.GetComponent<EnemyControl>().createEnmey =speedE; 
         Instantiate(EnemyPrefabs);
     }
