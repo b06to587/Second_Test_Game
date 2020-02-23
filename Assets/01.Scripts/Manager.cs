@@ -29,8 +29,7 @@ public class Manager : MonoBehaviour
     void Start()
     {
        //Debug.Log(TileSize);
-        CreateTile();
-       
+        CreateTile();  
         
         //시작 스테이지 입력
         nowStage =nowStageList.stage1;
@@ -51,6 +50,8 @@ public class Manager : MonoBehaviour
         
     }
 
+    // 2020.02.23 KBJ
+    //타일을 생성한다
     private void CreateTile()
     {
         Vector3 worldStart = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width/2,Screen.height/2));
@@ -69,11 +70,13 @@ public class Manager : MonoBehaviour
       
     }
 
+    // 2020.02.23 KBJ
+    //타일의 위치를 잡아준다 생성한다
     private void PlaceTile(int x, int y, Vector3 worldStart)
     {
         GameObject newTile = Instantiate(tile);
         newTile.transform.position = new Vector3(worldStart.x + TileSize * x - TileSize*2, worldStart.y - TileSize * y + TileSize*6 ,0);
-        newTile.transform.parent = baseGroud.transform;
+        newTile.transform.SetParent(baseGroud.transform,true);
     }
 
 
