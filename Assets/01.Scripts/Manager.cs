@@ -34,9 +34,10 @@ public class Manager : MonoBehaviour
         
         //시작 스테이지 입력
         nowStage =nowStageList.stage1;
-        //
-        spawnDefaultEnemy();
-        spawnSpeedEnemy();
+        
+        //스테이지 매니저 시작(스포너 실행)
+        StartCoroutine(StageManager());
+ 
     }
 
     public float TileSize
@@ -94,6 +95,31 @@ public class Manager : MonoBehaviour
         speedE.enemyHp = 10;
         EnemyPrefabs.GetComponent<EnemyControl>().createEnmey =speedE; 
         Instantiate(EnemyPrefabs);
+    }
+
+
+
+    //스테이지 매니저
+    IEnumerator StageManager()
+    {
+        switch(nowStage)
+        {
+            case nowStageList.stage1:
+            Debug.Log("현재스테이지는 1입니다");
+            for(int i = 0; i<=5 ; i++)
+            {
+                spawnDefaultEnemy();
+                yield return new WaitForSeconds(2.0f);
+            }
+            for(int i = 0; i<=2 ; i++)
+            {
+                spawnSpeedEnemy();
+                yield return new WaitForSeconds(1.0f);
+            }
+            
+            yield return null; 
+            break;
+        }
     }
     
 
