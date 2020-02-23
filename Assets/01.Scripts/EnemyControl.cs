@@ -13,6 +13,7 @@ public class EnemyControl : MonoBehaviour
     private Vector2 firstPoint;
     private Vector2 secondPoint;
     private Vector2 finalPoint;
+    
 
     public enum checkPoint
     {
@@ -26,9 +27,16 @@ public class EnemyControl : MonoBehaviour
     //에너미 스테이터스 영역
     public Enemy createEnmey;
 
+    //스프라이트 변경
+  
+
     // Start is called before the first frame update
     void Start()
     {
+ 
+         
+
+
         nowPoint = checkPoint.point1;
                 //리미트포인트 1은 좌상단 2는 우하단
         startPoint= new Vector2(limitPoint1.x, limitPoint2.y);
@@ -122,11 +130,7 @@ public class EnemyControl : MonoBehaviour
 
 
     //에너미 생성 클래스
-    public void createDefaultEnemy()
-    {
-        createEnmey= new Enemy();
-        createEnmey.enemySpeed=30.0f;
-    }
+  
 
 
 
@@ -139,4 +143,11 @@ public class Enemy{
     //에너미 스테이터스 영역
     public float enemySpeed;
     public float enemyHp;
+    public SpriteRenderer mySprite;
+
+    
+
+    
+    
+    
 }
