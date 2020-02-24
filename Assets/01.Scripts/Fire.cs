@@ -5,17 +5,14 @@ using UnityEngine.AI;
 public class Fire : MonoBehaviour
 {
     public List<GameObject> FoundObjects;
-    public GameObject enemy;
-    public string TagName;
-    public float shortDis;
+    private GameObject enemy;
+    private string TagName = "Enemy";
+    private float shortDis;
 
     public float speed = 50f;
-    private float startTime;
-    private float distanceLength;
 
-    private Vector3 StartPosition;
-    private Vector3 EndPosition;
-    private Vector3 currPosition;
+    private Vector2 endPosition;
+    private Vector2 startPosition;
 
     public void Update()
     {
@@ -35,20 +32,14 @@ public class Fire : MonoBehaviour
             }
 
         }
-        //Debug.Log(enemy.transform.position);
+        //현재위치
+        startPosition = transform.position;
+        //적위치
+        endPosition = new Vector2(enemy.transform.position.x, enemy.transform.position.y); 
 
-        StartPosition = transform.position;
-        EndPosition = new Vector3(enemy.transform.position.x, enemy.transform.position.y, 0);
-
-        startTime = Time.time;
-        distanceLength = Vector3.Distance(StartPosition, EndPosition);
-
-
-        transform.Translate(Vector3.up * Time.deltaTime);
-
-        currPosition = transform.position;
         float step = speed * Time.deltaTime;
-        transform.position = Vector3.MoveTowards(currPosition, EndPosition, step);
+        //발사!
+        transform.position = Vector2.MoveTowards(startPosition, endPosition, step);
     }
 
 
