@@ -24,7 +24,7 @@ public class Slot : MonoBehaviour, IBeginDragHandler, IDragHandler, IDropHandler
         go_SkillImage.SetActive(true);
     }
 
-    //스킬 슬롯 초기화
+    //스킬 슬롯 전체 초기화
     private void ClearSlot()
     {
         skill = null;
@@ -44,7 +44,7 @@ public class Slot : MonoBehaviour, IBeginDragHandler, IDragHandler, IDropHandler
     {
         
     }
-
+    //테두리 색 안보이게 하는 
     private void SetColor(float _alpha)
     {
         Color color = skillImage.color;
@@ -52,11 +52,7 @@ public class Slot : MonoBehaviour, IBeginDragHandler, IDragHandler, IDropHandler
         skillImage.color = color;
     }
 
-    private void ClearSkill()
-    {
-        this.skill = null;
-    }
-
+    //드래그를 시작할때
     public void OnBeginDrag(PointerEventData eventData)
     {
         if(skill != null)
@@ -81,11 +77,11 @@ public class Slot : MonoBehaviour, IBeginDragHandler, IDragHandler, IDropHandler
     {
         DragSkill.instance.SetColor(0);
         DragSkill.instance.dragSlot = null;
-       
+        ClearSlot();
     }
 
     public void OnDrop(PointerEventData eventData)
     {
-        ClearSkill();
+        ClearSlot();
     }
 }

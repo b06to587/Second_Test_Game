@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//아이템 스크립트
 [CreateAssetMenu(fileName ="New Skill", menuName = "New Skill/skill")]
 public class Skill : ScriptableObject
 {
