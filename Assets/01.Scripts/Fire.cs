@@ -9,10 +9,19 @@ public class Fire : MonoBehaviour
     private string TagName = "Enemy";
     private float shortDis;
 
+    private float damage;
+
     public float speed = 50f;
 
     private Vector2 endPosition;
     private Vector2 startPosition;
+
+    void Start()
+    {
+        Bullet_State();
+   //     Debug.Log(damage);
+     //   Debug.Log(gameObject.tag);
+    }
 
     public void Update()
     {
@@ -35,7 +44,7 @@ public class Fire : MonoBehaviour
         //현재위치
         startPosition = transform.position;
         //적위치
-        endPosition = new Vector2(enemy.transform.position.x, enemy.transform.position.y); 
+        endPosition = new Vector2(enemy.transform.position.x, enemy.transform.position.y);
 
         float step = speed * Time.deltaTime;
         //발사!
@@ -43,14 +52,42 @@ public class Fire : MonoBehaviour
     }
 
 
-    
+
     private void OnTriggerEnter2D(Collider2D other)
     {
-
         if (other.gameObject.tag == "Enemy")
         {
             Destroy(gameObject);
         }
-
     }
+
+    // 터렛 정보 얻기
+    public void Bullet_State()
+    {
+        TurretControl state = transform.parent.GetComponent<TurretControl>();
+        damage = state.damage;
+        Tag();
+    }
+
+    //태그 변경
+    private void Tag()
+    {
+        TurretControl state = transform.parent.GetComponent<TurretControl>();
+        switch (state.turretLevel)
+        {
+            case 2:
+                gameObject.tag = "Bullet1";
+                break;
+            case 3:
+                gameObject.tag = "Bullet2";
+                break;
+            case 4:
+                gameObject.tag = "Bullet3";
+                break;
+            case 5:
+                gameObject.tag = "Bullet4";
+                break;
+        }
+    }
+
 }

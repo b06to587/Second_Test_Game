@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 92392416783192933}
   m_Layer: 0
   m_Name: Bullet
-  m_TagString: Untagged
+  m_TagString: Bullet0
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -71,7 +71,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   m_Color: {r: 0.8400457, g: 1, b: 0, a: 1}
   m_FlipX: 0
@@ -112,9 +112,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FoundObjects: []
-  enemy: {fileID: 0}
-  TagName: Enemy
-  shortDis: 0
   speed: 12
 --- !u!50 &92392416783192933
 Rigidbody2D:

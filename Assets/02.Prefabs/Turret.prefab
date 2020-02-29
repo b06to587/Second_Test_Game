@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6330173067069614439}
   - component: {fileID: 3537772064962826684}
-  - component: {fileID: 3537772064962826687}
+  - component: {fileID: 4555357681134898193}
   m_Layer: 0
   m_Name: Turret
   m_TagString: Untagged
@@ -86,7 +86,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &3537772064962826687
+--- !u!114 &4555357681134898193
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -95,15 +95,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 3537772064962826686}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea147d2923802b3449f849e166c9aa9a, type: 3}
+  m_Script: {fileID: 11500000, guid: 2810d43c723ca1946aa877502f89fa41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LayerEnemy:
-    serializedVersion: 2
-    m_Bits: 0
   Bullet: {fileID: 437955957630169313, guid: 52962285a6e1b664fa1903ef0ae9970b, type: 3}
   FoundObjects: []
-  shortDis: 0
-  tileDamage: 5
+  damage: 5
   attack_Range: 2
-  TimeLeft: 0.5
+  timeLeft: 1
+  turretLevel: 0
