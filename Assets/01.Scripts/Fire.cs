@@ -18,6 +18,10 @@ public class Fire : MonoBehaviour
 
     void Start()
     {
+        FoundObjects = new List<GameObject>(GameObject.FindGameObjectsWithTag(TagName));
+        shortDis = Vector3.Distance(gameObject.transform.position, FoundObjects[0].transform.position); // 첫번째를 기준으로 잡아주기 
+
+        enemy = FoundObjects[0]; // 첫번째를 먼저 
         Bullet_State();
    //     Debug.Log(damage);
      //   Debug.Log(gameObject.tag);
@@ -25,10 +29,7 @@ public class Fire : MonoBehaviour
 
     public void Update()
     {
-        FoundObjects = new List<GameObject>(GameObject.FindGameObjectsWithTag(TagName));
-        shortDis = Vector3.Distance(gameObject.transform.position, FoundObjects[0].transform.position); // 첫번째를 기준으로 잡아주기 
-
-        enemy = FoundObjects[0]; // 첫번째를 먼저 
+        
 
         foreach (GameObject found in FoundObjects)
         {
