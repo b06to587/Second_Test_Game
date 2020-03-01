@@ -29,27 +29,33 @@ public class Fire : MonoBehaviour
 
     public void Update()
     {
-        
-
-        foreach (GameObject found in FoundObjects)
+        try
         {
-            float Distance = Vector3.Distance(gameObject.transform.position, found.transform.position);
-
-            if (Distance < shortDis) // 위에서 잡은 기준으로 거리 재기
+            foreach (GameObject found in FoundObjects)
             {
-                enemy = found;
-                shortDis = Distance;
+                float Distance = Vector3.Distance(gameObject.transform.position, found.transform.position);
+
+                if (Distance < shortDis) // 위에서 잡은 기준으로 거리 재기
+                {
+                    enemy = found;
+                    shortDis = Distance;
+                }
             }
 
-        }
-        //현재위치
-        startPosition = transform.position;
-        //적위치
-        endPosition = new Vector2(enemy.transform.position.x, enemy.transform.position.y);
+            //현재위치
+            startPosition = transform.position;
+            //적위치
+            endPosition = new Vector2(enemy.transform.position.x, enemy.transform.position.y);
 
-        float step = speed * Time.deltaTime;
-        //발사!
-        transform.position = Vector2.MoveTowards(startPosition, endPosition, step);
+            float step = speed * Time.deltaTime;
+            //발사!
+            transform.position = Vector2.MoveTowards(startPosition, endPosition, step);
+        }
+
+        catch(MissingReferenceException)
+        {
+            Destroy(gameObject);
+        }
     }
 
 
