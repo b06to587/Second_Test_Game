@@ -56,7 +56,7 @@ public class EnemyControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-    // transform.position=Vector2.MoveTowards(transform.position,limitPoint1,enemySpeed*Time.deltaTime);
+        isDestroy();
     }
 
 
@@ -115,6 +115,16 @@ public class EnemyControl : MonoBehaviour
 
 
 
+    //오브젝트 상태 점검해서 파괴해줄 함수
+    public void isDestroy()
+    {
+        if(createEnmey.enemyHp <=0)
+        {
+            Debug.Log("이건 파괴되어야 합니다");
+            Destroy(this.gameObject);
+        }
+    }
+
 
     //에너미 이동경로 찍어줌
       private void OnDrawGizmos()
@@ -129,9 +139,72 @@ public class EnemyControl : MonoBehaviour
     }
 
 
-    //에너미 생성 클래스
-  
+    //충돌처리
+    //블렛 태그 확인해서 충돌처리한다 
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        // if(other.gameObject.tag.Equals("Bullet0"))
+        // {
+        //     Debug.Log("총알에 맞았다!");
+        // }
+        switch(other.tag)
+        {
+            case "Bullet0":
+            Debug.Log(" 0총알에 맞았다!");
+            createEnmey.enemyHp -=5; 
+            break;
 
+            case "Bullet1":
+            Debug.Log(" 1총알에 맞았다!");
+            createEnmey.enemyHp -=5; 
+            slowBullet();
+            break;
+
+            case "Bullet2":
+            Debug.Log(" 2총알에 맞았다!");
+            break;
+
+            case "Bullet3":
+            Debug.Log("3총알에 맞았다!");
+            break;
+
+            case "Bullet4":
+            Debug.Log("4총알에 맞았다!");
+            break;
+
+            case "Bullet5":
+            Debug.Log("5총알에 맞았다!");
+            break;
+
+            case "Bullet6":
+            Debug.Log("6총알에 맞았다!");
+            break;
+
+            case "Bullet7":
+            Debug.Log("7총알에 맞았다!");
+            break;
+
+            case "Bullet8":
+            Debug.Log("8총알에 맞았다!");
+            break;
+
+            case "Bullet9":
+            Debug.Log("9총알에 맞았다!");
+            break;
+
+        }
+        
+    }
+
+
+    //스킬 효과들을 정의합니다
+    public void slowBullet()
+    {
+        if(createEnmey.enemySpeed >= 1.0f)
+        {
+            createEnmey.enemySpeed -=2.0f;
+        }
+    }
 
 
 }
