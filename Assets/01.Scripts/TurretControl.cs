@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using System;
 public class TurretControl : MonoBehaviour
 {
     SpriteRenderer render;
@@ -11,7 +11,7 @@ public class TurretControl : MonoBehaviour
     public List<GameObject> FoundObjects;
     private GameObject enemy;
     private string tagName = "Enemy";
-    private float shortDis;
+    public float shortDis;
 
     public float damage = 5f;           //데미지
     float damage_Upgrade = 2f;
@@ -29,27 +29,34 @@ public class TurretControl : MonoBehaviour
     void Update()
     {
         FindEnemy();
-        Fire();
     }
 
     // 가장 가까운 적 찾기
     public void FindEnemy()
     {
-        FoundObjects = new List<GameObject>(GameObject.FindGameObjectsWithTag(tagName));
-        shortDis = Vector2.Distance(gameObject.transform.position, FoundObjects[0].transform.position); // 첫번째를 기준으로 잡아주기 
-
-        enemy = FoundObjects[0]; // 첫번째를 먼저 적으로 삼고
-
-        foreach (GameObject found in FoundObjects)  //적 오브젝트를 수만큼 반복하며 찾아보리기
+        try
         {
-            float Distance = Vector2.Distance(gameObject.transform.position, found.transform.position);
+            FoundObjects = new List<GameObject>(GameObject.FindGameObjectsWithTag(tagName));
+            shortDis = Vector2.Distance(gameObject.transform.position, FoundObjects[0].transform.position); // 첫번째를 기준으로 잡아주기 
 
-            if (Distance < shortDis) // 위에서 잡은 기준으로 거리 비교해서
+            enemy = FoundObjects[0]; // 첫번째를 먼저 적으로 삼고
+
+            foreach (GameObject found in FoundObjects)  //적 오브젝트를 수만큼 반복하며 찾아보리기
             {
-                enemy = found;
-                shortDis = Distance;    //더 짧은놈이 적
+                float Distance = Vector2.Distance(gameObject.transform.position, found.transform.position);
+
+                if (Distance < shortDis) // 위에서 잡은 기준으로 거리 비교해서
+                {
+                    enemy = found;
+                    shortDis = Distance;    //더 짧은놈이 적
+                }
+            }
+            if (FoundObjects[0] != null)
+            {
+                Fire();
             }
         }
+        catch (ArgumentOutOfRangeException) { }
     }
 
     private void Fire()
@@ -75,7 +82,7 @@ public class TurretControl : MonoBehaviour
     private void Create()
     {
         GameObject newBullet = Instantiate(Bullet, this.transform.position, this.transform.rotation);
-        newBullet.transform.SetParent(gameObject.transform, true);
+        newBullet.transform.SetParent(gameObject.transform, true);  
     }
 
     //터렛 생성시 레벨을 확인하고 적용

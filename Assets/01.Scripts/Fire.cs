@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using System;
 public class Fire : MonoBehaviour
 {
     public List<GameObject> FoundObjects;
