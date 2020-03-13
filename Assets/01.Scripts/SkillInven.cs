@@ -25,13 +25,16 @@ public class SkillInven : MonoBehaviour
     void Update()
     {
         AddSampleSkills(skill1);
+        
     }
 
     //샘플 a키 눌렀을 때 스킬 삽입 
+    //진동- 이부분 디버깅시 T는뜨는데 슬롯이 작동안함... 
     private void AddSampleSkills(Skill _skill)
     {
         if(Input.GetKeyDown(KeyCode.A))
         {   
+            Debug.Log("t");
             for (int i = 0; i < slots.Length; i++)
             {
                 if(slots[i].skill == null)

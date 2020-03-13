@@ -216,6 +216,7 @@ public class Enemy{
     //에너미 스테이터스 영역
     public float enemySpeed;
     public float enemyHp;
+    public float enemyMoney;
     public SpriteRenderer mySprite;
 
     
