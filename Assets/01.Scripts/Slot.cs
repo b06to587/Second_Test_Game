@@ -1,27 +1,26 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.EventSystems;
 
-public class Slot : MonoBehaviour, IBeginDragHandler, IDragHandler, IDropHandler
+public class Slot : MonoBehaviour
 {
     private Vector3 oriPos;
     public Skill skill; //획득한 스킬
-    public Image skillImage;
+    public SpriteRenderer skillImage;
 
     [SerializeField]
-    private Text text_Number;
-    [SerializeField]
     private GameObject go_SkillImage;
-    
+    private bool isBeingHeld = false;
+    private float startPosX;
+    private float startPosY;
     //스킬 추가
     public void AddSkill(Skill _skill)
     {
-        skill = _skill;
+        skill = _skill; 
+        Debug.Log(skill);
+        Debug.Log(skill.skillImage.GetType());
         skillImage.sprite = skill.skillImage;
-
-        go_SkillImage.SetActive(true);
+        go_SkillImage = _skill.skillPrefab;
     }
 
     //스킬 슬롯 전체 초기화
@@ -29,21 +28,33 @@ public class Slot : MonoBehaviour, IBeginDragHandler, IDragHandler, IDropHandler
     {
         skill = null;
         skillImage.sprite = null;
-
         go_SkillImage.SetActive(false);
     }
 
     // Start is called before the first frame update
     void Start()
     {
+        skillImage = GetComponent<SpriteRenderer>();
         oriPos = transform.position;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+       followMousePos();
     }
+
+    private void followMousePos()
+    {
+        if(isBeingHeld)
+        {
+            Vector3 mousePos;
+            mousePos = Input.mousePosition;
+            mousePos = Camera.main.ScreenToWorldPoint(mousePos);
+            this.gameObject.transform.localPosition = new Vector3(mousePos.x - startPosX,mousePos.y - startPosY,0);
+        }
+    }
+
     //테두리 색 안보이게 하는 
     private void SetColor(float _alpha)
     {
@@ -52,36 +63,25 @@ public class Slot : MonoBehaviour, IBeginDragHandler, IDragHandler, IDropHandler
         skillImage.color = color;
     }
 
-    //드래그를 시작할때
-    public void OnBeginDrag(PointerEventData eventData)
+    private void OnMouseDown() 
     {
-        if(skill != null)
+        Debug.Log("moused");
+        if(Input.GetMouseButtonDown(0))
         {
-            DragSkill.instance.dragSlot = this;
-            DragSkill.instance.DragSetImage(skillImage);
-            DragSkill.instance.dragSlot.SetColor(0);
-
-            DragSkill.instance.transform.position = eventData.position;
+            Vector3 mousePos;
+            mousePos = Input.mousePosition;
+            mousePos = Camera.main.ScreenToWorldPoint(mousePos);
+            startPosX = mousePos.x - this.transform.localPosition.x;
+            startPosY = mousePos.y - this.transform.localPosition.y;
         }
+
+        isBeingHeld = true;
     }
 
-    public void OnDrag(PointerEventData eventData)
+    private void OnMouseUp() 
     {
-        if (skill != null)
-        {
-            DragSkill.instance.transform.position = eventData.position;
-        }
+        Debug.Log("mup");
+        isBeingHeld = false;
     }
 
-    public void OnEndDrag(PointerEventData eventData)
-    {
-        DragSkill.instance.SetColor(0);
-        DragSkill.instance.dragSlot = null;
-        ClearSlot();
-    }
-
-    public void OnDrop(PointerEventData eventData)
-    {
-        ClearSlot();
-    }
 }

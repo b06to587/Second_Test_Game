@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-//¾ÆÀÌÅÛ ½ºÅ©¸³Æ®
+//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Å©ï¿½ï¿½Æ®
 [CreateAssetMenu(fileName ="New Skill", menuName = "New Skill/skill")]
 public class Skill : ScriptableObject
 {

@@ -24,8 +24,7 @@ public class SkillInven : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        AddSampleSkills(skill1);
-        
+        AddSampleSkills(skill1);        
     }
 
     //샘플 a키 눌렀을 때 스킬 삽입 
@@ -34,7 +33,7 @@ public class SkillInven : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.A))
         {   
-            Debug.Log("t");
+           
             for (int i = 0; i < slots.Length; i++)
             {
                 if(slots[i].skill == null)
