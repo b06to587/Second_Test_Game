@@ -157,7 +157,7 @@ public class EnemyControl : MonoBehaviour
             case "Bullet1":
             Debug.Log(" 1총알에 맞았다!");
             createEnmey.enemyHp -=5; 
-            slowBullet();
+        
             break;
 
             case "Bullet2":
@@ -191,6 +191,9 @@ public class EnemyControl : MonoBehaviour
             case "Bullet9":
             Debug.Log("9총알에 맞았다!");
             break;
+            case "Skill7777":
+            Debug.Log("skill7777피격");
+            break;
 
         }
         
@@ -198,14 +201,49 @@ public class EnemyControl : MonoBehaviour
 
 
     //스킬 효과들을 정의합니다
-    public void slowBullet()
+    public void Effect0722()
     {
+        //7월 22일 가장 더운시기
         if(createEnmey.enemySpeed >= 1.0f)
         {
             createEnmey.enemySpeed -=2.0f;
         }
     }
-
+    public void Effect7777()
+    {
+        //돈을 두배로 올려줌 돈 미구현
+    }
+    public void Effect1004()
+    {
+        //라이프포인트 관련 효과를 줄것
+    }
+    public void Effect6666()
+    {
+        //악마의숫자
+        //?라이프? 를깍아서 모든적 소멸?
+    }
+    public void Effect2357()
+    {
+        //게임에 쓰이는 프라임 넘버들
+        //특정 타입 데미지 더주기?
+    }
+    public void Effect149()
+    {
+        //제곱수 공격력 2배?
+        
+    }
+    public void Effect345()
+    {
+        //피타고라스의 수 3명공격?
+    }
+    public void Effect0101()
+    {
+        //맞은적 위치 처음으로 되돌리기
+    }
+    public void Effect0505()
+    {
+        //어린이날 대상의 공방을 깍는다 
+    }
 
 }
    
@@ -217,6 +255,8 @@ public class Enemy{
     public float enemySpeed;
     public float enemyHp;
     public float enemyMoney;
+    //몹의 구분이 필요할때 사용
+    public float enemyType;
     public SpriteRenderer mySprite;
 
     

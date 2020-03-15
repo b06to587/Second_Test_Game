@@ -14,6 +14,8 @@ public class Fire : MonoBehaviour
 
     public float speed = 50f;
 
+    public Skill Skill7777;
+
     private Vector2 endPosition;
     private Vector2 startPosition;
 
@@ -78,8 +80,16 @@ public class Fire : MonoBehaviour
     }
 
     //태그 변경
+    //스킬일경우 체크 스킬이아니면 터렛ㅌㅐ그
+    //스킬이면 스킬태그로 파이어함
     private void Tag()
     {
+        if(this.gameObject.tag=="Skill")
+        {
+            gameObject.tag = string.Format(Skill7777.skillName);
+        }
+        else
+        {
         TurretControl state = transform.parent.GetComponent<TurretControl>();
         switch (state.turretLevel)
         {
@@ -96,6 +106,7 @@ public class Fire : MonoBehaviour
                 gameObject.tag = "Bullet4";
                 break;
         }
+    }
     }
 
 }
