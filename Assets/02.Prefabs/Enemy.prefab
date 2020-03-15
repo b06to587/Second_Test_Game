@@ -100,6 +100,7 @@ MonoBehaviour:
   createEnmey:
     enemySpeed: 3
     enemyHp: 10
+    enemyMoney: 0
     mySprite: {fileID: 0}
 --- !u!61 &8037388654067559232
 BoxCollider2D:

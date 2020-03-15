@@ -1,8 +1,8 @@
-ï»¿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-//ì•„ì´í…œ ìŠ¤í¬ë¦½íŠ¸
+//¾ÆÀÌÅÛ ½ºÅ©¸³Æ®
 [CreateAssetMenu(fileName ="New Skill", menuName = "New Skill/skill")]
 public class Skill : ScriptableObject
 {
@@ -10,11 +10,14 @@ public class Skill : ScriptableObject
     public Sprite skillImage;
     public SkillType skillType;
     public GameObject skillPrefab;
-
+    
+    
     public enum SkillType
     {
         Active,
         Passive
     }
+
+ 
 
 }

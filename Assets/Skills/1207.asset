@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0c4a23215dd57eb468fcf95fc197c2b6, type: 3}
-  m_Name: New Skill
+  m_Name: 1207
   m_EditorClassIdentifier: 
-  skillName: 
+  skillName: 1207
   skillImage: {fileID: 0}
   skillType: 0
   skillPrefab: {fileID: 0}
