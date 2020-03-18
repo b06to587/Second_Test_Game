@@ -11,13 +11,13 @@ public class Skill : ScriptableObject
     public SkillType skillType;
     public GameObject skillPrefab;
     
-    
+    public DragSkill dragable;
+
+
     public enum SkillType
     {
         Active,
         Passive
     }
-
- 
 
 }

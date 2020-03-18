@@ -6,32 +6,46 @@ using UnityEngine.UI;
 //스킬을 실제로 drag 할때를 위해 만든 클래스
 public class DragSkill : MonoBehaviour
 {
-    static public DragSkill instance;
 
-    public Slot dragSlot;
+    private bool isBeingHeld = false;
+    private float startPosX;
+    private float startPosY;
 
-    // 아이템 이미지.
-    [SerializeField]
-    private Image imageSkill;
 
-    //자기자신을 넣어준다
-    void Start()
+    private void OnMouseDown() 
     {
-        instance = this;
+        Debug.Log("moused");
+        if(Input.GetMouseButtonDown(0))
+        {
+            Vector3 mousePos;
+            mousePos = Input.mousePosition;
+            mousePos = Camera.main.ScreenToWorldPoint(mousePos);
+            startPosX = mousePos.x - this.transform.localPosition.x;
+            startPosY = mousePos.y - this.transform.localPosition.y;
+        }
+
+        isBeingHeld = true;
     }
 
-    //드래그 이미지를 넣어준다 
-	public void DragSetImage(Image _itemSkill)
+    void Update()
     {
-        imageSkill.sprite = _itemSkill.sprite;
-        SetColor(1);
+       followMousePos();
     }
 
-    //투명도를 조절한다
-    public void SetColor(float _alpha)
+
+    private void followMousePos()
     {
-        Color color = imageSkill.color;
-        color.a = _alpha;
-        imageSkill.color = color;
+        if(isBeingHeld)
+        {
+            Vector3 mousePos;
+            mousePos = Input.mousePosition;
+            mousePos = Camera.main.ScreenToWorldPoint(mousePos);
+            this.gameObject.transform.localPosition = new Vector3(mousePos.x - startPosX,mousePos.y - startPosY,0);
+        }
+    }
+    private void OnMouseUp() 
+    {
+        Debug.Log("mup");
+        isBeingHeld = false;
     }
 }
