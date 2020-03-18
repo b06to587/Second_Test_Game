@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;//씬관리
 
 public class TitleManager : MonoBehaviour
 {
@@ -14,5 +15,9 @@ public class TitleManager : MonoBehaviour
     void Update()
     {
         
+    }
+    public void OnclickGameStart()
+    {
+         SceneManager.LoadScene("Stage1");//씬번호 이름
     }
 }
