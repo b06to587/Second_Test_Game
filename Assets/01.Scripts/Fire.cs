@@ -93,19 +93,34 @@ public class Fire : MonoBehaviour
         TurretControl state = transform.parent.GetComponent<TurretControl>();
         switch (state.turretLevel)
         {
-            case 2:
-                gameObject.tag = "Bullet1";
-                break;
-            case 3:
-                gameObject.tag = "Bullet2";
-                break;
-            case 4:
-                gameObject.tag = "Bullet3";
-                break;
-            case 5:
-                gameObject.tag = "Bullet4";
-                break;
-        }
+                case 2:
+                    gameObject.tag = "Bullet1";
+                    break;
+                case 3:
+                    gameObject.tag = "Bullet2";
+                    break;
+                case 4:
+                    gameObject.tag = "Bullet3";
+                    break;
+                case 5:
+                    gameObject.tag = "Bullet4";
+                    break;
+                case 6:
+                    gameObject.tag = "Bullet5";
+                    break;
+                case 7:
+                    gameObject.tag = "Bullet6";
+                    break;
+                case 8:
+                    gameObject.tag = "Bullet7";
+                    break;
+                case 9:
+                    gameObject.tag = "Bullet8";
+                    break;
+                case 10:
+                    gameObject.tag = "Bullet9";
+                    break;
+            }
     }
     }
 

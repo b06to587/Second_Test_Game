@@ -45,7 +45,7 @@ public class Tile : MonoBehaviour
             turret.turretLevel = turretCheck;
         }
 
-        else if (turretCheck > 0 && turretCheck < 5)
+        else if (turretCheck > 0 && turretCheck < 10)
         {
             TurretControl turret = transform.GetChild(0).GetComponent<TurretControl>();
             turretCheck++;

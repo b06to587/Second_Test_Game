@@ -11,6 +11,11 @@ TagManager:
   - Bullet3
   - Bullet4
   - Skill
+  - Bullet5
+  - Bullet6
+  - Bullet7
+  - Bullet8
+  - Bullet9
   layers:
   - Default
   - TransparentFX
