@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using System;
 public class TurretControl : MonoBehaviour
 {
@@ -22,20 +21,9 @@ public class TurretControl : MonoBehaviour
 
     public int turretLevel = 0;
 
-    //텍스트 관련
-    public Text elementalText;
-    public Camera camera;
-    private Transform target;
-
     void Start()
     {
         render = GetComponent<SpriteRenderer>();
-
-        //텍스트 관련
-        target = GetComponent<Transform>();
-        Vector2 screenPos = camera.WorldToScreenPoint(target.position);
-        float x = screenPos.x;
-        elementalText.transform.position = new Vector2(x, screenPos.y);
     }
 
     void Update()

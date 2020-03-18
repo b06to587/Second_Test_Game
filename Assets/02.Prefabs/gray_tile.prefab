@@ -94,8 +94,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5406ce50c0379534189e1173174e8e93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  turretCheck: 0
-  turretobj: {fileID: 6172946854740594732, guid: fb61fee8ec95b9945904aff3c424a8e0,
+  turretobj: {fileID: 3537772064962826686, guid: d79390a6b526c034dbd09be589d6fccb,
     type: 3}
   tileOrigianlPos: {x: 0, y: 0}
 --- !u!61 &-7114788502053994670
