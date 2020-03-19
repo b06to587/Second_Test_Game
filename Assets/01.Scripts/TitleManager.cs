@@ -44,4 +44,11 @@ public class TitleManager : MonoBehaviour
     {
         Money.text ="Money :"+totalMoney.ToString("###,###");
     }
+    //상점에서 버튼을 눌렀을시 동작
+    public void OnClickBuybutton(GameObject target)
+    {
+       //텍스트 접근 Debug.Log(target.transform.FindChild("Level").GetComponent<Text>().text);
+        target.transform.FindChild("Level").GetComponent<Text>().text+=1;
+        
+    }
 }
