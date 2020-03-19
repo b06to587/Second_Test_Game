@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Manager : MonoBehaviour
 {
+
+
     //싱글톤 구현 (다른 스크립트에서 참조 가능하도록)
     public static Manager gm;
     [SerializeField]
@@ -11,7 +13,7 @@ public class Manager : MonoBehaviour
     [SerializeField]
     private GameObject baseGroud;
     [SerializeField]
-    private int gameMoney;
+    public int gameMoney;
 
     //적 오브젝트
     public GameObject EnemyPrefabs;
