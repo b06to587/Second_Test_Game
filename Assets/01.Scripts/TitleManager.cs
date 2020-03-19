@@ -48,7 +48,13 @@ public class TitleManager : MonoBehaviour
     public void OnClickBuybutton(GameObject target)
     {
        //텍스트 접근 Debug.Log(target.transform.FindChild("Level").GetComponent<Text>().text);
-        target.transform.FindChild("Level").GetComponent<Text>().text+=1;
+        //해당 버튼 레벨 받아오기
+       int buttonInLevel=int.Parse(target.transform.FindChild("Level")
+       .GetComponent<Text>().text);
+       //업글단계 올려주고
+      buttonInLevel+=1;
+      //다시적용
+      target.transform.FindChild("Level").GetComponent<Text>().text=buttonInLevel.ToString();
         
     }
 }
