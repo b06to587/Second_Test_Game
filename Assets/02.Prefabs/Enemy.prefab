@@ -94,8 +94,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ff9f77fad6b7d744a5e0029b4b2efc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  limitPoint1: {x: -2.12, y: 4.37}
-  limitPoint2: {x: 2.23, y: 0}
+  limitPoint1: {x: -2, y: 4}
+  limitPoint2: {x: 2, y: 0}
   nowPoint: 0
   createEnmey:
     enemySpeed: 3
