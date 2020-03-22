@@ -32,8 +32,7 @@ public class SkillInven : MonoBehaviour
     private void AddSampleSkills(Skill _skill)
     {
         if(Input.GetKeyDown(KeyCode.A))
-        {   
-           
+        {            
             for (int i = 0; i < slots.Length; i++)
             {
                 if(slots[i].skill == null)

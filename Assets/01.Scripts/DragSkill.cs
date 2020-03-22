@@ -14,7 +14,6 @@ public class DragSkill : MonoBehaviour
 
     private void OnMouseDown() 
     {
-        Debug.Log("moused");
         if(Input.GetMouseButtonDown(0))
         {
             Vector3 mousePos;
@@ -45,7 +44,6 @@ public class DragSkill : MonoBehaviour
     }
     private void OnMouseUp() 
     {
-        Debug.Log("mup");
         isBeingHeld = false;
     }
 }

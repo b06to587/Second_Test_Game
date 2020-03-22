@@ -14,7 +14,9 @@ public class Slot : MonoBehaviour
     //스킬 추가
     public void AddSkill(Skill _skill)
     {
-        GameObject skill =  Instantiate(_skill.skillPrefab,transform.position,Quaternion.identity);
+        this.skill = _skill;
+        GameObject skillprefab =  Instantiate(_skill.skillPrefab,transform.position,Quaternion.identity);
+        skillprefab.transform.localScale =  new Vector3(0.2f,0.2f,0);
     }
 
     //스킬 슬롯 전체 초기화
