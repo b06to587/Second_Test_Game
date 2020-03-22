@@ -21,11 +21,15 @@ public class TurretControl : MonoBehaviour
     private float nextTime = 0.0f;
 
     public int turretLevel = 0;
+    public int turretTier = 0;
 
     //텍스트 관련
-    public Text elementalText;
+    public Text levelText;
+    public Text levelTextTier;
     public Camera camera;
     private Transform target;
+    private RectTransform rect_levelText;
+    private RectTransform rect_levelTextTier;
 
     void Start()
     {
@@ -35,7 +39,10 @@ public class TurretControl : MonoBehaviour
         target = GetComponent<Transform>();
         Vector2 screenPos = camera.WorldToScreenPoint(target.position);
         float x = screenPos.x;
-        elementalText.transform.position = new Vector2(x, screenPos.y);
+        levelText.transform.position = new Vector2(x, screenPos.y);
+        levelTextTier.transform.position = new Vector2(x, screenPos.y);
+        rect_levelText = levelText.GetComponent<RectTransform>();    //티어 위치 변경
+        rect_levelTextTier = levelTextTier.GetComponent<RectTransform>();
     }
 
     void Update()
@@ -102,51 +109,81 @@ public class TurretControl : MonoBehaviour
     {
         switch (turretLevel)
         {
+            case 1:
+                render.color = new Color(0.1f, 0.5f, 0.9f, 1);
+                damage += damage_Upgrade;
+                levelText.GetComponent<Text>().text = "0";
+                break;
             case 2:
                 render.color = new Color(0.1f, 0.5f, 0.9f, 1);
                 damage += damage_Upgrade;
-                elementalText.GetComponent<Text>().text = "1";
+                levelText.GetComponent<Text>().text = "1";
                 break;
             case 3:
                 render.color = new Color(0.2f, 0.5f, 0.8f, 1);
                 damage += damage_Upgrade;
-                elementalText.GetComponent<Text>().text = "2";
+                levelText.GetComponent<Text>().text = "2";
                 break;
             case 4:
                 render.color = new Color(0.3f, 0.5f, 0.7f, 1);
                 damage += damage_Upgrade;
-                elementalText.GetComponent<Text>().text = "3";
+                levelText.GetComponent<Text>().text = "3";
                 break;
             case 5:
                 render.color = new Color(0.4f, 0.5f, 0.6f, 1);
                 damage += damage_Upgrade;
-                elementalText.GetComponent<Text>().text = "4";
+                levelText.GetComponent<Text>().text = "4";
                 break;
             case 6:
                 render.color = new Color(0.6f, 0.5f, 0.4f, 1);
                 damage += damage_Upgrade;
-                elementalText.GetComponent<Text>().text = "5";
+                levelText.GetComponent<Text>().text = "5";
                 break;
             case 7:
                 render.color = new Color(0.7f, 0.5f, 0.3f, 1);
                 damage += damage_Upgrade;
-                elementalText.GetComponent<Text>().text = "6";
+                levelText.GetComponent<Text>().text = "6";
                 break;
             case 8:
                 render.color = new Color(0.8f, 0.5f, 0.2f, 1);
                 damage += damage_Upgrade;
-                elementalText.GetComponent<Text>().text = "7";
+                levelText.GetComponent<Text>().text = "7";
                 break;
             case 9:
                 render.color = new Color(0.9f, 0.5f, 0.1f, 1);
                 damage += damage_Upgrade;
-                elementalText.GetComponent<Text>().text = "8";
+                levelText.GetComponent<Text>().text = "8";
                 break;
             case 10:
                 render.color = new Color(1, 0.5f, 0, 1);
                 damage += damage_Upgrade;
-                elementalText.GetComponent<Text>().text = "9";
+                levelText.GetComponent<Text>().text = "9";
                 break;
+            default:
+                turretTier += 1;
+                TierCheck();
+                break;
+        }
+    }
+
+    private void TierCheck()
+    {
+        if (turretTier == 1)
+        {
+            Tile tile = transform.parent.GetComponent<Tile>();
+            levelTextTier.GetComponent<Text>().text = "★";
+            levelText.GetComponent<Text>().text = "0";
+            tile.turretCheck = 1;
+            rect_levelText.sizeDelta = new Vector2(160, 21);
+        }
+
+        if (turretTier == 2)
+        {
+            Tile tile = transform.parent.GetComponent<Tile>();
+            levelTextTier.GetComponent<Text>().text = "★★";
+            levelText.GetComponent<Text>().text = "0";
+            tile.turretCheck = 1;
+            rect_levelTextTier.sizeDelta = new Vector2(178, 55);
         }
     }
 
