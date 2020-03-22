@@ -17,6 +17,7 @@ public class Slot : MonoBehaviour
         this.skill = _skill;
         GameObject skillprefab =  Instantiate(_skill.skillPrefab,transform.position,Quaternion.identity);
         skillprefab.transform.localScale =  new Vector3(0.2f,0.2f,0);
+        skillprefab.name = _skill.skillName;
     }
 
     //스킬 슬롯 전체 초기화
