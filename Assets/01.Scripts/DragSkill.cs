@@ -7,13 +7,16 @@ using UnityEngine.UI;
 public class DragSkill : MonoBehaviour
 {
     private string mSkillName;
+    [SerializeField]
     private bool isBeingHeld = false;
     private float startPosX;
     private float startPosY;
     private bool inTile = false;
 
-     ArrayList tempNumArry = new ArrayList();
-
+    private int determineLength;
+    [SerializeField]
+     ArrayList tempNumArry;
+    [SerializeField]
      private string tempNum;
 
 
@@ -33,26 +36,34 @@ public class DragSkill : MonoBehaviour
         isBeingHeld = true;
     }
 
+    void Start()
+    {
+       mSkillName = this.gameObject.name;
+       tempNumArry = new ArrayList();
+    }
+
     void Update()
     {
        FollowMousePos();
        ChangeSize();
-       if(this.gameObject.name == FindNumber(tempNumArry) && inTile)
+       if(!isBeingHeld)
        {
-           Debug.Log("skill ok");
-       }
-       else
-       {
-            Debug.Log("not okay" + tempNum + FindNumber(tempNumArry));
-       }
-       
+            if(this.gameObject.name == FindNumber(tempNumArry) && inTile)
+            {
+                Debug.Log("skill ok");
+            }
+            else
+            {
+                Debug.Log("not okay" + tempNum + FindNumber(tempNumArry));
+            }
+       }    
     }
 
     private void ChangeSize()
     {
         if(SkillinTile(this.transform.position.x, this.transform.position.y))
         {
-            this.transform.localScale = new Vector3(0.43f, 0.43f, 0);
+            this.transform.localScale = new Vector3(0.35f, 0.35f, 0);
         }
         else
         {
@@ -88,24 +99,36 @@ public class DragSkill : MonoBehaviour
         isBeingHeld = false;
     }
 
-    void OnTriggerEnter2D(Collider2D col)
+    private void OnTriggerStay2D(Collider2D col) 
     {
-        if(col.tag == "Turret" )
-        { 
-            int a =col.gameObject.GetComponent<TurretControl>().turretLevel;      
-            tempNumArry.Add(a);
-            Debug.Log(col.gameObject.name + " : " + gameObject.name + " : ");
+        if(col.tag == "Turret")
+        {
+            bool numberflag = col.gameObject.GetComponent<TurretControl>().giveNumber;
+            if(!isBeingHeld  && !numberflag)
+            { 
+                int a =col.gameObject.GetComponent<TurretControl>().turretLevel;
+                tempNumArry.Add(a);
+                col.gameObject.GetComponent<TurretControl>().giveNumber  = true;
+                Debug.Log(col.gameObject.name + " : " + gameObject.name + " : ");
+            }
         }
+       
 
     }
 
     private string FindNumber(ArrayList list)
     {
-        for(int i = 0 ; i < list.Count ;i++)
-        {
-            tempNum += list[i];
+        for(int i = 0 ; i < list.Count; i++)
+        {          
+            if(tempNum.Length == mSkillName.Length)
+            {
+                break;
+            }
+            else
+            {
+                tempNum += list[i];
+            }
         }
-
         return tempNum;
     }
 }

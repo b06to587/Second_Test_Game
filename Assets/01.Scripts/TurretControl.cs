@@ -32,6 +32,8 @@ public class TurretControl : MonoBehaviour
     private RectTransform rect_levelText;
     private RectTransform rect_levelTextTier;
 
+    public bool giveNumber = false;
+
     void Start()
     {
         render = GetComponent<SpriteRenderer>();
@@ -117,55 +119,60 @@ public class TurretControl : MonoBehaviour
     {
         switch (turretLevel)
         {
-            case 1:
-                render.color = new Color(0.1f, 0.5f, 0.9f, 1);
+            case 0:
+                render.color = new Color(0.7f, 0.5f, 0.9f, 1);
                 damage += damage_Upgrade;
                 levelText.GetComponent<Text>().text = "0";
                 break;
-            case 2:
+            case 1:
                 render.color = new Color(0.1f, 0.5f, 0.9f, 1);
                 damage += damage_Upgrade;
                 levelText.GetComponent<Text>().text = "1";
                 break;
+            case 2:
+                render.color = new Color(0.1f, 0.5f, 0.9f, 1);
+                damage += damage_Upgrade;
+                levelText.GetComponent<Text>().text = "2";
+                break;
             case 3:
                 render.color = new Color(0.2f, 0.5f, 0.8f, 1);
                 damage += damage_Upgrade;
-                levelText.GetComponent<Text>().text = "2";
+                levelText.GetComponent<Text>().text = "3";
                 break;
             case 4:
                 render.color = new Color(0.3f, 0.5f, 0.7f, 1);
                 damage += damage_Upgrade;
-                levelText.GetComponent<Text>().text = "3";
+                levelText.GetComponent<Text>().text = "4";
                 break;
             case 5:
                 render.color = new Color(0.4f, 0.5f, 0.6f, 1);
                 damage += damage_Upgrade;
-                levelText.GetComponent<Text>().text = "4";
+                levelText.GetComponent<Text>().text = "5";
                 break;
             case 6:
                 render.color = new Color(0.6f, 0.5f, 0.4f, 1);
                 damage += damage_Upgrade;
-                levelText.GetComponent<Text>().text = "5";
+                levelText.GetComponent<Text>().text = "6";
                 break;
             case 7:
                 render.color = new Color(0.7f, 0.5f, 0.3f, 1);
                 damage += damage_Upgrade;
-                levelText.GetComponent<Text>().text = "6";
+                levelText.GetComponent<Text>().text = "7";
                 break;
             case 8:
                 render.color = new Color(0.8f, 0.5f, 0.2f, 1);
                 damage += damage_Upgrade;
-                levelText.GetComponent<Text>().text = "7";
+                levelText.GetComponent<Text>().text = "8";
                 break;
             case 9:
                 render.color = new Color(0.9f, 0.5f, 0.1f, 1);
                 damage += damage_Upgrade;
-                levelText.GetComponent<Text>().text = "8";
+                levelText.GetComponent<Text>().text = "9";
                 break;
             case 10:
                 render.color = new Color(1, 0.5f, 0, 1);
                 damage += damage_Upgrade;
-                levelText.GetComponent<Text>().text = "9";
+                levelText.GetComponent<Text>().text = "0";
                 break;
             default:
                 turretTier += 1;
