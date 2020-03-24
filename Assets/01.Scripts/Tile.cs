@@ -5,8 +5,7 @@ using UnityEngine.UI;
 
 public class Tile : MonoBehaviour
 {
-    public int turretCheck = 0;
-
+    private bool isbuild = false;
     [SerializeField]
     private GameObject turretobj;
 
@@ -35,22 +34,15 @@ public class Tile : MonoBehaviour
     // 자기자신의 위치에 터렛을 생성하고 부모를 바꾼다
     private void CreateTurret()
     {
-        if (turretCheck <= 0)
+        if (!isbuild)
         {   //터렛 무한생성 방지    // 터렛 레벨 확인
             GameObject newturret = Instantiate(turretobj, tileOrigianlPos, Quaternion.identity);
             newturret.transform.SetParent(gameObject.transform, true);
-
-            TurretControl turret = transform.GetChild(0).GetComponent<TurretControl>();
-            turretCheck++;
-            turret.turretLevel = turretCheck;
+            isbuild = true;
         }
-
-        else if (turretCheck > 0)
+        else
         {
-            TurretControl turret = transform.GetChild(0).GetComponent<TurretControl>();
-            turretCheck++;
-            turret.turretLevel = turretCheck;
-            turret.TurretList();    //터렛 업그레이드
+           return;
         }
     }
 }

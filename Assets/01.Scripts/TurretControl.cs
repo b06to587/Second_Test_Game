@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using System;
 public class TurretControl : MonoBehaviour
 {
+    public int turretCheck = 0;
     SpriteRenderer render;
     //    public LayerMask LayerEnemy;
     public GameObject Bullet;
@@ -104,6 +105,13 @@ public class TurretControl : MonoBehaviour
         newBullet.transform.SetParent(gameObject.transform, true);  
     }
 
+
+    private void OnMouseDown()
+    {
+        UpgradeTurret();
+    }
+
+
     //터렛 생성시 레벨을 확인하고 적용
     public void TurretList()
     {
@@ -166,6 +174,13 @@ public class TurretControl : MonoBehaviour
         }
     }
 
+    public void UpgradeTurret()
+    {
+        turretCheck++;
+        this.turretLevel = turretCheck;
+        this.TurretList();    //터렛 업그레이드
+    }
+
     private void TierCheck()
     {
         if (turretTier == 1)
@@ -173,7 +188,7 @@ public class TurretControl : MonoBehaviour
             Tile tile = transform.parent.GetComponent<Tile>();
             levelTextTier.GetComponent<Text>().text = "★";
             levelText.GetComponent<Text>().text = "0";
-            tile.turretCheck = 1;
+            turretCheck = 1;
             rect_levelText.sizeDelta = new Vector2(160, 21);
         }
 
@@ -182,7 +197,7 @@ public class TurretControl : MonoBehaviour
             Tile tile = transform.parent.GetComponent<Tile>();
             levelTextTier.GetComponent<Text>().text = "★★";
             levelText.GetComponent<Text>().text = "0";
-            tile.turretCheck = 1;
+            turretCheck = 1;
             rect_levelTextTier.sizeDelta = new Vector2(178, 55);
         }
     }

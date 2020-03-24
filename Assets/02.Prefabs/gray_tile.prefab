@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6991315816919652424}
   - component: {fileID: 1496931324048270018}
   - component: {fileID: 8964114969229937598}
-  - component: {fileID: -7114788502053994670}
+  - component: {fileID: 4463280213999674835}
   m_Layer: 0
   m_Name: gray_tile
   m_TagString: Untagged
@@ -98,7 +98,7 @@ MonoBehaviour:
   turretobj: {fileID: 3704542149584428078, guid: 3bc89ee388e5fa94680ed87d9dedc768,
     type: 3}
   tileOrigianlPos: {x: 0, y: 0}
---- !u!61 &-7114788502053994670
+--- !u!61 &4463280213999674835
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

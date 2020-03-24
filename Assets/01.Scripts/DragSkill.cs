@@ -12,8 +12,12 @@ public class DragSkill : MonoBehaviour
     private float startPosY;
     private bool inTile = false;
 
+     ArrayList tempNumArry = new ArrayList();
+
+     private string tempNum;
 
 
+    private TurretControl turretControl;
 
     private void OnMouseDown() 
     {
@@ -33,6 +37,15 @@ public class DragSkill : MonoBehaviour
     {
        FollowMousePos();
        ChangeSize();
+       if(this.gameObject.name == FindNumber(tempNumArry) && inTile)
+       {
+           Debug.Log("skill ok");
+       }
+       else
+       {
+            Debug.Log("not okay" + tempNum + FindNumber(tempNumArry));
+       }
+       
     }
 
     private void ChangeSize()
@@ -49,7 +62,7 @@ public class DragSkill : MonoBehaviour
 
     private bool SkillinTile(float x, float y)
     {
-        if( (x>-1 && x < 1) && (y >1 && y< 3))
+        if( (x>-0.98 && x < 0.98) && (y >0.98 && y< 2.94))
         {
             inTile = true;
         }
@@ -73,5 +86,26 @@ public class DragSkill : MonoBehaviour
     private void OnMouseUp() 
     {
         isBeingHeld = false;
+    }
+
+    void OnTriggerEnter2D(Collider2D col)
+    {
+        if(col.tag == "Turret" )
+        { 
+            int a =col.gameObject.GetComponent<TurretControl>().turretLevel;      
+            tempNumArry.Add(a);
+            Debug.Log(col.gameObject.name + " : " + gameObject.name + " : ");
+        }
+
+    }
+
+    private string FindNumber(ArrayList list)
+    {
+        for(int i = 0 ; i < list.Count ;i++)
+        {
+            tempNum += list[i];
+        }
+
+        return tempNum;
     }
 }
